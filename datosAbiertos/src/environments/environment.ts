@@ -12,5 +12,8 @@ export const environment = {
     projectId: 'datos-abiertos-angular',
     storageBucket: '',
     messagingSenderId: '609080943173'
+  },
+  soda: {
+    appToken: 'hb7RAkx7Q88iF74HUoXybrxm2'
   }
 };

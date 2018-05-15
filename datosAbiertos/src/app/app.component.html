@@ -17,8 +17,24 @@
       </div>
     </div>
     <div class="row row-content">
-      <h2 class="margin-top-md"><strong>Courses List</strong></h2>
-      <app-courses-list></app-courses-list>
+      <button type="button" class="btn btn-primary col-12 " (click)="cargarDatos()">Cargar datos</button>
+      <div *ngIf="testData">
+        <h2>Medicamentos</h2>
+      </div>
+      <div *ngFor="let element of testData" class="card">
+        <div class="card-header margin-top-md">
+          <h4><strong>{{ element.descripcionatc }}</strong> - <span><small>{{ element.estadoregistro }}</small></span></h4>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Medicamento:</h5>
+          <p class="card-text">{{ element.descripcioncomercial }}</p>
+        </div>
+        <div class="card-footer text-muted">
+          <p><strong>Fecha Activo: </strong><span> {{ element.fechaactivo | date}} </span></p>
+          <p><strong>Fecha de Expedición : </strong><span> {{ element.fechaexpedicion }} </span></p>
+          <p><strong>Fecha de Vencimiento: </strong><span> {{ element.fechavencimiento }} </span></p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
