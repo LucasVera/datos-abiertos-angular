@@ -1,0 +1,30 @@
+export class Medicine {
+  expediente: number;
+  producto: string;
+  titular: string;
+  registrosanitario: string;
+  fechaexpedicion: string;
+  fechavencimiento: string;
+  estadoregistro: string;
+  expedientecum: number;
+  consecutivocum: number;
+  cantidadcum: number;
+  descripcioncomercial: string;
+  estadocum: string;
+  fechaactivo: string;
+  fechainactivo: string;
+  muestramedica: string;
+  unidad: string;
+  atc: string;
+  descripcionatc: string;
+  viaadministracion: string;
+  concentracion: string;
+  principioactivo: string;
+  unidadmedida: string;
+  cantidad: number;
+  unidadreferencia: string;
+  formafarmaceutica: string;
+  nombrerol: string;
+  tiporol: string;
+  modalidad: string;
+}

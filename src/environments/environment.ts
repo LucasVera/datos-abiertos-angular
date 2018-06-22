@@ -13,7 +13,20 @@ export const environment = {
     storageBucket: '',
     messagingSenderId: '609080943173'
   },
-  soda: {
-    appToken: 'hb7RAkx7Q88iF74HUoXybrxm2'
+  datos: {
+    generalUrl: 'https://www.datos.gov.co/resource/',
+    appToken: 'hb7RAkx7Q88iF74HUoXybrxm2',
+    medicamentosVigentes: {
+      url: 'https://www.datos.gov.co/resource/wqeu-3uhz.json',
+      code: 'wqeu-3uhz'
+    },
+    medicamentosVencidos: {
+      url: 'https://www.datos.gov.co/resource/6nr4-fx8r.json',
+      code: '6nr4-fx8r'
+    },
+    emergenciasNaturales: {
+      url: 'https://www.datos.gov.co/resource/a3er-k5e4.json',
+      code: 'a3er-k5e4'
+    }
   }
 };

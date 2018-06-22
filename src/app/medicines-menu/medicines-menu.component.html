@@ -1,0 +1,29 @@
+<h2>Medicinas</h2>
+<ngx-spinner size="medium" type="ball-clip-rotate"></ngx-spinner>
+<ngb-tabset type="tabs">
+  <ngb-tab>
+    <ng-template ngbTabTitle><div (click)="fillValidMedicineData()">Medicamentos Vigentes</div></ng-template>
+    <ng-template ngbTabContent>
+      <div *ngFor="let medicine of validMedicines" class="card">
+        <div class="card-header margin-top-md">
+          <h4><strong>{{ medicine.descripcionatc }}</strong> - <span><small>{{ medicine.estadoregistro }}</small></span></h4>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Medicamento:</h5>
+          <p class="card-text">{{ medicine.descripcioncomercial }}</p>
+        </div>
+        <div class="card-footer text-muted">
+          <p><strong>Fecha Activo: </strong><span> {{ medicine.fechaactivo | date}} </span></p>
+          <p><strong>Fecha de Expedición : </strong><span> {{ medicine.fechaexpedicion }} </span></p>
+          <p><strong>Fecha de Vencimiento: </strong><span> {{ medicine.fechavencimiento }} </span></p>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab title="Medicaments Vencidos ">
+    <ng-template ngbTabContent>
+      <p>Content 2</p>
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>
+

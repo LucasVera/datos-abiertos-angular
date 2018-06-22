@@ -1,0 +1,17 @@
+<h2>Emergencias naturales</h2>
+<ngx-spinner size="medium" type="ball-clip-rotate"></ngx-spinner>
+<div *ngFor="let emergencie of naturalEmergencies" class="card">
+  <div class="card-header margin-top-md">
+    <h4><strong>{{ emergencie.evento }}</strong> - <span><small>{{ emergencie.departamento }}</small></span></h4>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><strong>Muertos: </strong><span> {{ emergencie.muertos || 0 | number}} </span></p>
+    <p class="card-text"><strong>Heridos: </strong><span> {{ emergencie.heridos || 0 | number }} </span></p>
+    <p class="card-text"><strong>Departamento: </strong><span> {{ emergencie.departamento }} </span></p>
+    <p class="card-text"><strong>Municipio: </strong><span> {{ emergencie.municipio }} </span></p>
+  </div>
+  <div class="card-footer text-muted">
+    <p><strong>Codificación segun Divipola: </strong><span> {{ emergencie.codificacionsegundivipola }} </span></p>
+    <p><strong>Fecha: </strong><span> {{ emergencie.fecha | date }} </span></p>
+  </div>
+</div>
