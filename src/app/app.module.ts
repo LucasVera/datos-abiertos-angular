@@ -20,6 +20,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { NaturalEmergenciesComponent } from './natural-emergencies/natural-emergencies.component';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     AppNavbarComponent,
     MedicinesMenuComponent,
     PageNotFoundComponent,
-    NaturalEmergenciesComponent
+    NaturalEmergenciesComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
