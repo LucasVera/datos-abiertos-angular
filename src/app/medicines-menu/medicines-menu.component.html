@@ -1,21 +1,19 @@
-<h2>Medicinas</h2>
+<h1>Medicinas</h1>
 <ngx-spinner size="medium" type="ball-clip-rotate"></ngx-spinner>
 <ngb-tabset type="tabs">
   <ngb-tab>
     <ng-template ngbTabTitle><div (click)="fillValidMedicineData()">Medicamentos Vigentes</div></ng-template>
     <ng-template ngbTabContent>
-      <div *ngFor="let medicine of validMedicines" class="card">
-        <div class="card-header margin-top-md">
-          <h4><strong>{{ medicine.descripcionatc }}</strong> - <span><small>{{ medicine.estadoregistro }}</small></span></h4>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Medicamento:</h5>
-          <p class="card-text">{{ medicine.descripcioncomercial }}</p>
-        </div>
-        <div class="card-footer text-muted">
-          <p><strong>Fecha Activo: </strong><span> {{ medicine.fechaactivo | date}} </span></p>
-          <p><strong>Fecha de Expedición : </strong><span> {{ medicine.fechaexpedicion }} </span></p>
-          <p><strong>Fecha de Vencimiento: </strong><span> {{ medicine.fechavencimiento }} </span></p>
+      <div class="list-group">
+        <div class="list-group-item" *ngFor="let medicine of validMedicines">
+          <div class="m-4">
+            <h3 class="mb-3 mt-2"><strong>{{ medicine.descripcionatc }}</strong> - <span><small class="text-success">{{ medicine.estadoregistro }}</small></span></h3>
+            <h5 class="text-primary">Medicamento</h5>
+            <p class="mb-4">{{ medicine.descripcioncomercial }}</p>
+            <p class="mb-1 mt-1"><strong>Activo Desde </strong><span class="text-muted ml-1"> {{ medicine.fechaactivo | date: 'longDate' }} </span></p>
+            <p class="mb-1 mt-1"><strong>Expedición </strong><span class="text-muted ml-3"> {{ medicine.fechaexpedicion | date: 'longDate' }} </span></p>
+            <p><strong>Vencimiento </strong><span class="text-muted ml-1"> {{ medicine.fechavencimiento | date: 'longDate' }} </span></p>
+          </div>
         </div>
       </div>
     </ng-template>

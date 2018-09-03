@@ -1,14 +1,22 @@
-<h2>Emergencias naturales</h2>
+<h1>Emergencias naturales</h1>
 <ngx-spinner size="medium" type="ball-clip-rotate"></ngx-spinner>
+<div class="list-group">
+  <div class="list-group-item" *ngFor="let emergencie of naturalEmergencies">
+    <div class="m-4">
+      <h3 class="mb-3 mt-2"><strong>{{ emergencie.evento }}</strong> - <span><small class="text-success">{{ emergencie.departamento }}</small></span></h3>
+      <p class="mb-1 mt-1"><strong>Muertos: </strong><span class="ml-2"> {{ emergencie.muertos || 0 | number}} </span></p>
+      <p class="mb-1 mt-1"><strong>Heridos: </strong><span class="ml-2"> {{ emergencie.heridos || 0 | number }} </span></p>
+      <p class="mb-1 mt-1"><strong>Ubicación: </strong> <span class="text-primary"> {{ emergencie.municipio }}</span></p>
+    </div>
+  </div>
+</div>
+
 <div *ngFor="let emergencie of naturalEmergencies" class="card">
   <div class="card-header margin-top-md">
-    <h4><strong>{{ emergencie.evento }}</strong> - <span><small>{{ emergencie.departamento }}</small></span></h4>
+    <h4></h4>
   </div>
   <div class="card-body">
-    <p class="card-text"><strong>Muertos: </strong><span> {{ emergencie.muertos || 0 | number}} </span></p>
-    <p class="card-text"><strong>Heridos: </strong><span> {{ emergencie.heridos || 0 | number }} </span></p>
-    <p class="card-text"><strong>Departamento: </strong><span> {{ emergencie.departamento }} </span></p>
-    <p class="card-text"><strong>Municipio: </strong><span> {{ emergencie.municipio }} </span></p>
+    
   </div>
   <div class="card-footer text-muted">
     <p><strong>Codificación segun Divipola: </strong><span> {{ emergencie.codificacionsegundivipola }} </span></p>

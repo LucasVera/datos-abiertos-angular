@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AngularFireModule } from 'angularfire2';
@@ -22,6 +22,11 @@ import { NaturalEmergenciesComponent } from './natural-emergencies/natural-emerg
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HomeComponent } from './home/home.component';
 
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es-CO';
+
+registerLocaleData(localeEs);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +47,8 @@ import { HomeComponent } from './home/home.component';
     NgbModule.forRoot()
   ],
   providers: [
-    DatosService
+    DatosService,
+    { provide: LOCALE_ID, useValue: 'es-CO' }
   ],
   bootstrap: [AppComponent]
 })
