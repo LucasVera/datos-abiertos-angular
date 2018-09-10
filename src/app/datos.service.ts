@@ -12,6 +12,8 @@ import { Emergencie } from './natural-emergencies/Emergencie';
 export class DatosService {
   validMedicinesLastFetchMoment: moment.Moment = moment();
   validMedicines: Array<Medicine>;
+  invalidMedicinesLastFetchMoment: moment.Moment = moment();
+  invalidMedicines: Array<Medicine>;
   naturalEmergenciesLastFetchMoment: moment.Moment = moment();
   naturalEmergencies: Array<Emergencie>;
   constructor(private errorService: ErrorService) { }
@@ -34,6 +36,24 @@ export class DatosService {
       return new AsyncResponse(false, '', 'Ocurrió un error al consultar datos de medicinas vigentes.', false);
     }
   }
+  async loadInvalidMedicineData() {
+    try {
+      if (!shouldFetchData(this.invalidMedicinesLastFetchMoment, this.invalidMedicines)) {
+        return new AsyncResponse(true, this.invalidMedicines, '', true);
+      }
+      const queryString = initialQueryString() + '&$limit=10';
+      const url = environment.datos.medicamentosVencidos.url + queryString;
+      const data = await axios.get(url);
+      this.invalidMedicines = data.data;
+      this.invalidMedicinesLastFetchMoment = moment();
+      return new AsyncResponse(true, this.invalidMedicines, '', false);
+    }
+    catch (ex) {
+      console.log('** error fetching data!');
+      this.errorService.logErrorInDb(ex);
+      return new AsyncResponse(false, '', 'Ocurrió un error al consultar datos de medicinas vencidas.', false);
+    }
+  }
   async loadNaturalEmergencies() {
     try {
       if (!shouldFetchData(this.naturalEmergenciesLastFetchMoment, this.naturalEmergencies)) {
@@ -44,7 +64,6 @@ export class DatosService {
       const data = await axios.get(url);
       this.naturalEmergencies = data.data;
       this.naturalEmergenciesLastFetchMoment = moment();
-      console.log(this.naturalEmergencies);
       return new AsyncResponse(true, this.naturalEmergencies, '', false);
     }
     catch (ex) {

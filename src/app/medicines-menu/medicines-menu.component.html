@@ -4,7 +4,7 @@
   <ngb-tab>
     <ng-template ngbTabTitle><div (click)="fillValidMedicineData()">Medicamentos Vigentes</div></ng-template>
     <ng-template ngbTabContent>
-      <div class="list-group">
+      <div class="list-group" *ngIf="!validMedicinesError">
         <div class="list-group-item" *ngFor="let medicine of validMedicines">
           <div class="m-4">
             <h3 class="mb-3 mt-2"><strong>{{ medicine.descripcionatc }}</strong> - <span><small class="text-success">{{ medicine.estadoregistro }}</small></span></h3>
@@ -16,11 +16,26 @@
           </div>
         </div>
       </div>
+      <h3 *ngIf="validMedicinesError && validMedicinesError !== ''" class="m-2 p-2 text-danger">{{ validMedicinesError }}</h3>
+      <h3 class="m-4 p-4">{{ invalidMedicinesError }}</h3>
     </ng-template>
   </ngb-tab>
-  <ngb-tab title="Medicaments Vencidos ">
+  <ngb-tab>
+    <ng-template ngbTabTitle><div (click)="fillInvalidMedicineData()">Medicamentos Vencidos</div></ng-template>
     <ng-template ngbTabContent>
-      <p>Content 2</p>
+      <div class="list-group" *ngIf="!invalidMedicinesError">
+        <div class="list-group-item" *ngFor="let invalidMedicine of invalidMedicines">
+          <div class="m-4">
+            <h3 class="mb-3 mt-2"><strong>{{ invalidMedicine.descripcionatc }}</strong> - <span><small class="text-success">{{ invalidMedicine.estadoregistro }}</small></span></h3>
+            <h5 class="text-primary">Medicamento</h5>
+            <p class="mb-4">{{ invalidMedicine.descripcioncomercial }}</p>
+            <p class="mb-1 mt-1"><strong>Activo Desde </strong><span class="text-muted ml-1"> {{ invalidMedicine.fechaactivo | date: 'longDate' }} </span></p>
+            <p class="mb-1 mt-1"><strong>Expedición </strong><span class="text-muted ml-3"> {{ invalidMedicine.fechaexpedicion | date: 'longDate' }} </span></p>
+            <p><strong>Vencimiento </strong><span class="text-muted ml-1"> {{ invalidMedicine.fechavencimiento | date: 'longDate' }} </span></p>
+          </div>
+        </div>
+      </div>
+      <h3 *ngIf="invalidMedicinesError" class="m-2 p-2 text-danger">{{ invalidMedicinesError }}</h3>
     </ng-template>
   </ngb-tab>
 </ngb-tabset>
